@@ -15,7 +15,7 @@ modalBtns.forEach((modalBtn) =>
     const scoreToPass = modalBtn.getAttribute("data-pass");
     const time = modalBtn.getAttribute("data-time");
     modalBody.innerHTML = `
-    <div class="h5 mb-3">Are you sure want to begin"<b>${name}</b>"?
+    <div class="h5 mb-3">Are you sure want to begin "<b>${name}</b>"?
     <div class="text-muted">
         <ul>
             <li> Difficulty: <b>${difficulty}</b></li>
