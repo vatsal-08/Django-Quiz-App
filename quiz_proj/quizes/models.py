@@ -15,8 +15,7 @@ class Quiz(models.Model):
     topic = models.CharField(max_length=120)
     number_of_questions = models.IntegerField()
     time = models.IntegerField(help_text="duration of the quiz in minutes")
-    required_score_to_pass = models.IntegerField(
-        help_text="required score in %")
+    required_score_to_pass = models.IntegerField(help_text="required score in %")
     difficulty = models.CharField(max_length=6, choices=DIFF_CHOICES)
 
     def __str__(self):

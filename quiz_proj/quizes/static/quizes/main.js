@@ -1,13 +1,14 @@
-console.log('Hello World!!');
+console.log("Hello World!!");
 
-const modalBtns = [...document.getElementsByClassName('modal-button')];
+const modalBtns = [...document.getElementsByClassName("modal-button")];
 const modalBody = document.getElementById("modal-body-confirm");
 
-const startBtn = document.getElementById('start-button');
-const url = window.location.href; 
+const startBtn = document.getElementById("start-button");
+const url = window.location.href;
 
-modalBtns.forEach(modalBtn=>modalBtn.addEventListener('click', ()=>{
-    const pk = modalBtn.getAttribute('data-pk')
+modalBtns.forEach((modalBtn) =>
+  modalBtn.addEventListener("click", () => {
+    const pk = modalBtn.getAttribute("data-pk");
     const name = modalBtn.getAttribute("data-quiz");
     const numQuestions = modalBtn.getAttribute("data-questions");
     const difficulty = modalBtn.getAttribute("data-difficulty");
@@ -18,13 +19,14 @@ modalBtns.forEach(modalBtn=>modalBtn.addEventListener('click', ()=>{
     <div class="text-muted">
         <ul>
             <li> Difficulty: <b>${difficulty}</b></li>
-            <li> Number of questions: <b>${difficulty}</b></li>
+            <li> Number of questions: <b>${numQuestions}</b></li>
             <li> Score to pass: <b>${scoreToPass}</b></li>
             <li> Time: <b>${time}</b></li>
         </ul>
     </div>
     </div>`;
-    startBtn.addEventListener('click',()=>{
-        window.location.href = url +pk;
-    })
-}))
+    startBtn.addEventListener("click", () => {
+      window.location.href = url + pk;
+    });
+  })
+);
