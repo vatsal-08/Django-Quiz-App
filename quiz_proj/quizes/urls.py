@@ -8,5 +8,5 @@ app_name = 'quizes'
 
 urlpatterns = [
     path('', QuizListView.as_view(), name='main-view'),
-    path('<pk>/', quiz_view, name='quiz-view')
+    path('<int:pk>/', quiz_view, name='quiz-view')
 ]
