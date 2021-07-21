@@ -35,7 +35,7 @@ const quizForm = document.getElementById("quiz-form");
 const csrf = document.getElementsByName("csrfmiddlewaretoken");
 
 const sendData = () => {
-  const elements = [...document.getElementsByClassName('ans')];
+  const elements = [...document.getElementsByClassName("ans")];
   const data = {};
   data["csrfmiddlewaretoken"] = csrf[0].value;
   elements.forEach((el) => {
@@ -61,7 +61,8 @@ const sendData = () => {
   });
 };
 
-quizForm.addEventListener('submit', (e) => {
+quizForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   sendData();
 });
