@@ -1,5 +1,6 @@
 console.log("hello world quiz");
 const url = window.location.href;
+
 const quizBox = document.getElementById("quiz-box");
 const scoreBox = document.getElementById("score-box");
 const resultBox = document.getElementById("result-box");
@@ -33,7 +34,7 @@ const activateTimer = (time) => {
     } else {
       displaySeconds = seconds;
     }
-    if (minutes == 0 && seconds == 0) {
+    if (minutes === 0 && seconds === 0) {
       timerBox.innerHTML = "<b>00:00</b>";
       setTimeout(() => {
         clearInterval(timer);
@@ -41,6 +42,7 @@ const activateTimer = (time) => {
         sendData();
       }, 500);
     }
+
     timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`;
   }, 1000);
 };
@@ -97,21 +99,21 @@ const sendData = () => {
     url: `${url}save/`,
     data: data,
     success: function (response) {
-      // console.log(response);
       const results = response.results;
       console.log(results);
       quizForm.classList.add("not-visible");
 
-      scoreBox.innerHTML += `${
-        response.passed ? "Congratulations" : "OOps..:("
-      } Your result is ${response.score.toFixed(2)}%`;
+      scoreBox.innerHTML = `${
+        response.passed ? "Congratulations! " : "Ups..:( "
+      }Your result is ${response.score.toFixed(2)}%`;
 
       results.forEach((res) => {
         const resDiv = document.createElement("div");
         for (const [question, resp] of Object.entries(res)) {
           resDiv.innerHTML += question;
-          const cls = ["container", "p-3", "text-light", "h3"];
+          const cls = ["container", "p-3", "text-light", "h6"];
           resDiv.classList.add(...cls);
+
           if (resp == "not answered") {
             resDiv.innerHTML += "- not answered";
             resDiv.classList.add("bg-danger");
@@ -121,15 +123,14 @@ const sendData = () => {
 
             if (answer == correct) {
               resDiv.classList.add("bg-success");
-              resDiv.innerHTML += ` answered : ${answer}`;
+              resDiv.innerHTML += ` answered: ${answer}`;
             } else {
               resDiv.classList.add("bg-danger");
-              resDiv.innerHTML += ` | correct answer : ${correct}`;
-              resDiv.innerHTML += ` | answered : ${answer}`;
+              resDiv.innerHTML += ` | correct answer: ${correct}`;
+              resDiv.innerHTML += ` | answered: ${answer}`;
             }
           }
         }
-        // const body = document.getElementsByTagName("BODY")[0];
         resultBox.append(resDiv);
       });
     },
@@ -141,6 +142,6 @@ const sendData = () => {
 
 quizForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  timerBox.innerHTML = `<b>00:00</b>`;
   sendData();
 });
